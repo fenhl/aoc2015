@@ -4,6 +4,7 @@ use std::path::Path;
 
 pub mod p01;
 pub mod p02;
+pub mod p03;
 
 pub struct Puzzle {
     day: u8,
@@ -75,6 +76,7 @@ impl Iterator for Iter {
         }
         puzzles!(1, p01::solve1, p01::solve2);
         puzzles!(2, p02::solve1, p02::solve2);
+        puzzles!(3, p03::solve1);
         None
     }
 }
