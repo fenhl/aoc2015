@@ -1,3 +1,12 @@
+#![warn(trivial_casts)]
+#![forbid(unused, unused_extern_crates, unused_import_braces)]
+
+mod puzzle;
+
 fn main() {
-    println!("Hello, world!");
+    for puzzle in puzzle::Iter::default() {
+        print!("{}:", puzzle.display());
+        print!(" solving...");
+        println!(" {}", puzzle.solve());
+    }
 }
