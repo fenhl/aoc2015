@@ -76,7 +76,7 @@ impl Iterator for Iter {
         }
         puzzles!(1, p01::solve1, p01::solve2);
         puzzles!(2, p02::solve1, p02::solve2);
-        puzzles!(3, p03::solve1);
+        puzzles!(3, p03::solve1, p03::solve2);
         None
     }
 }
