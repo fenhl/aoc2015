@@ -2,7 +2,7 @@ use std::fs::File;
 use std::io::prelude::*;
 use std::path::Path;
 
-pub mod p01a;
+pub mod p01;
 
 pub struct Puzzle {
     day: u8,
@@ -20,10 +20,7 @@ impl Puzzle {
     }
 
     pub fn input_file(&self) -> File {
-        File::open(Path::new(&format!("assets/input/p{day:02}{puzzle_id}.txt",
-            day=self.day,
-            puzzle_id=if self.second { "b" } else { "a" }
-        ))).expect("input file not found")
+        File::open(Path::new(&format!("assets/input/p{:02}.txt", self.day))).expect("input file not found")
     }
 
     pub fn solve(&self) -> i32 {
@@ -51,19 +48,31 @@ impl Iterator for Iter {
     type Item = Puzzle;
 
     fn next(&mut self) -> Option<Puzzle> {
-        macro_rules! first {
-            ($day:expr, $solution:expr) => {
+        macro_rules! puzzles {
+            ($day:expr, $first_solution:expr) => {
                 if self.day == $day && self.second == false {
                     self.second = true;
                     return Some(Puzzle {
                         day: $day,
                         second: false,
-                        solution: $solution
+                        solution: $first_solution
+                    });
+                }
+            };
+            ($day:expr, $first_solution:expr, $second_solution:expr) => {
+                puzzles!($day, $first_solution);
+                if self.day == $day && self.second == true {
+                    self.day += 1;
+                    self.second = false;
+                    return Some(Puzzle {
+                        day: $day,
+                        second: true,
+                        solution: $second_solution
                     });
                 }
             };
         }
-        first!(1, p01a::solve);
+        puzzles!(1, p01::solve1, p01::solve2);
         None
     }
 }
