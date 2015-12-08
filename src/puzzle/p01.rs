@@ -1,5 +1,3 @@
-use std::io::prelude::*;
-
 pub fn solve1(input: String) -> i32 {
     input.chars().fold(0, |floor, c| match c {
         '(' => floor + 1,

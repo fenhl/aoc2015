@@ -8,3 +8,6 @@ name = "adventofcode"
 doc = false
 test = false
 bench = false
+
+[dependencies]
+regex = "*"

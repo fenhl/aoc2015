@@ -3,6 +3,7 @@ use std::io::prelude::*;
 use std::path::Path;
 
 pub mod p01;
+pub mod p02;
 
 pub struct Puzzle {
     day: u8,
@@ -12,8 +13,8 @@ pub struct Puzzle {
 
 impl Puzzle {
     pub fn display(&self) -> String {
-        format!("{second} puzzle of December {day}{ordinal_suffix}",
-            second=if self.second { "second" } else { "first" },
+        format!("{nth} puzzle of December {day: >2}{ordinal_suffix}",
+            nth=if self.second { "2nd" } else { "1st" },
             day=self.day,
             ordinal_suffix=match self.day { 1 => "st", 2 => "nd", 3 => "rd", _ => "th" }
         )
@@ -73,6 +74,7 @@ impl Iterator for Iter {
             };
         }
         puzzles!(1, p01::solve1, p01::solve2);
+        puzzles!(2, p02::solve1);
         None
     }
 }
