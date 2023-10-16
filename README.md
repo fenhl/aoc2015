@@ -1,2 +1,1 @@
-# adventofcode-2015-rust
-My solutions to 2015's Advent of Code puzzles
+My solutions to the first 3 of 2015's Advent of Code puzzles. This repository is archived in favor of [fenhl/aoc](https://github.com/fenhl/aoc) which includes solutions to more puzzles from 2015 as well as those from other years.
